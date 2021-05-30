@@ -17,12 +17,21 @@ class Container extends Component {
       ],
       shoppingListItems: [],
     };
+    this.handleClickGroceryItem = this.handleClickGroceryItem.bind(this);
   }
+
+  handleClickGroceryItem(event) {
+    console.log(event.target);
+  }
+
   render() {
     return (
       <div>
         <h1>Grocery List</h1>
-        <GroceryList items={this.state.groceryItems} />
+        <GroceryList
+          items={this.state.groceryItems}
+          handleClickGroceryItem={this.handleClickGroceryItem}
+        />
         <hr />
         <h1>In Shoppping Cart</h1>
         <ShoppingCart items={this.state.shoppingListItems} />
