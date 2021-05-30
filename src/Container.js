@@ -21,7 +21,16 @@ class Container extends Component {
   }
 
   handleClickGroceryItem(event) {
-    console.log(event.target);
+    console.log(event.target.getAttribute("value"));
+    console.log(event.target.getAttribute("key"));
+    const clickedItem = this.state.groceryItems.find(
+      (item) => item.title === event.target.getAttribute("value")
+    );
+    console.log(clickedItem);
+    this.setState({
+      ...this.state,
+      shoppingListItems: [...this.state.shoppingListItems].concat(clickedItem),
+    });
   }
 
   render() {
