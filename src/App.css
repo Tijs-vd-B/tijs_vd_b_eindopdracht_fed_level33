@@ -7,6 +7,12 @@ body {
   text-align: center;
 }
 
+.header {
+  background-color: black;
+  color: aliceblue;
+  padding: 0.2rem;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -14,12 +20,15 @@ body {
 
 .grocerylist,
 .shoppingcart {
-  width: 48%;
+  width: 100%;
 }
 
-li {
+ul {
   list-style-type: none;
-  padding: 0.2rem;
+  padding: 0;
+}
+li {
+  padding: 0.3rem;
 }
 .grocerylist__item li {
   background-color: indianred;
@@ -30,6 +39,6 @@ li {
 .shoppingcart__item li {
   background-color: steelblue;
 }
-.shoppingcart__item li:nth-child(odd) {
+.shoppingcart__item li:nth-child(even) {
   background-color: skyblue;
 }
