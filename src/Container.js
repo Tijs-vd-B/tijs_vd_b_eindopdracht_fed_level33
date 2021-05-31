@@ -18,10 +18,28 @@ class Container extends Component {
       shoppingListItems: [],
     };
     this.handleClickGroceryItem = this.handleClickGroceryItem.bind(this);
+    this.handleClickEmptyCart = this.handleClickEmptyCart.bind(this);
   }
 
   handleClickGroceryItem(event) {
-    console.log(event.target);
+    console.log(event.target.getAttribute("value"));
+    console.log(event.target.getAttribute("key"));
+    const clickedItem = this.state.groceryItems.find(
+      (item) => item.title === event.target.getAttribute("value")
+    );
+    console.log(clickedItem);
+    this.setState({
+      ...this.state,
+      shoppingListItems: [...this.state.shoppingListItems].concat(clickedItem),
+    });
+  }
+
+  handleClickEmptyCart(event) {
+    console.log(event);
+    this.setState({
+      ...this.state,
+      shoppingListItems: [],
+    });
   }
 
   render() {
@@ -34,7 +52,10 @@ class Container extends Component {
         />
         <hr />
         <h1>In Shoppping Cart</h1>
-        <ShoppingCart items={this.state.shoppingListItems} />
+        <ShoppingCart
+          items={this.state.shoppingListItems}
+          handleClickEmptyCart={this.handleClickEmptyCart}
+        />
       </div>
     );
   }
