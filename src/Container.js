@@ -44,18 +44,21 @@ class Container extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Grocery List</h1>
-        <GroceryList
-          items={this.state.groceryItems}
-          handleClickGroceryItem={this.handleClickGroceryItem}
-        />
-        <hr />
-        <h1>In Shoppping Cart</h1>
-        <ShoppingCart
-          items={this.state.shoppingListItems}
-          handleClickEmptyCart={this.handleClickEmptyCart}
-        />
+      <div className="container">
+        <div className="grocerylist">
+          <h1>Grocery List</h1>
+          <GroceryList
+            items={this.state.groceryItems}
+            handleClickGroceryItem={this.handleClickGroceryItem}
+          />
+        </div>
+        <div className="shoppingcart">
+          <h1>In Shoppping Cart</h1>
+          <ShoppingCart
+            items={this.state.shoppingListItems}
+            handleClickEmptyCart={this.handleClickEmptyCart}
+          />
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import List from "./List";
 function ShoppingCart(props) {
   console.log(props);
   return (
-    <div>
+    <div className="shoppingcart__item">
       <button onClick={props.handleClickEmptyCart}>Empty Cart</button>
       <List items={props.items} />
     </div>
