@@ -19,6 +19,8 @@ class Container extends Component {
     };
     this.handleClickGroceryItem = this.handleClickGroceryItem.bind(this);
     this.handleClickEmptyCart = this.handleClickEmptyCart.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClickAddItem = this.handleClickAddItem.bind(this);
   }
 
   handleClickGroceryItem(event) {
@@ -27,19 +29,43 @@ class Container extends Component {
     const clickedItem = this.state.groceryItems.find(
       (item) => item.title === event.target.getAttribute("value")
     );
-    console.log(clickedItem);
-    this.setState({
-      ...this.state,
-      shoppingListItems: [...this.state.shoppingListItems].concat(clickedItem),
-    });
+    if (this.state.shoppingListItems.includes(clickedItem)) {
+      console.log("Hey , you're already there!");
+    } else {
+      console.log(clickedItem);
+      this.setState({
+        ...this.state,
+        shoppingListItems: [...this.state.shoppingListItems].concat(
+          clickedItem
+        ),
+      });
+    }
   }
 
-  handleClickEmptyCart(event) {
-    console.log(event);
+  handleClickEmptyCart() {
     this.setState({
       ...this.state,
       shoppingListItems: [],
     });
+  }
+
+  handleClickAddItem(event) {
+    event.preventDefault();
+    console.log(this.state.newTitle);
+    console.log(this.state.groceryItems.length);
+    const newItem = {
+      id: this.state.groceryItems.length + 1,
+      title: this.state.newTitle,
+    };
+    this.setState({
+      ...this.state,
+      groceryItems: [...this.state.groceryItems].concat(newItem),
+    });
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -50,10 +76,12 @@ class Container extends Component {
           <GroceryList
             items={this.state.groceryItems}
             handleClickGroceryItem={this.handleClickGroceryItem}
+            handleChange={this.handleChange}
+            handleClickAddItem={this.handleClickAddItem}
           />
         </div>
         <div className="shoppingcart">
-          <h1>In Shoppping Cart</h1>
+          <h1>Shoppping Cart</h1>
           <ShoppingCart
             items={this.state.shoppingListItems}
             handleClickEmptyCart={this.handleClickEmptyCart}
