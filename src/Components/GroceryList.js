@@ -3,7 +3,6 @@ import List from "./List";
 import InputField from "./InputField";
 
 function GroceryList(props) {
-  console.log(props);
   return (
     <div className="grocerylist__item">
       <InputField

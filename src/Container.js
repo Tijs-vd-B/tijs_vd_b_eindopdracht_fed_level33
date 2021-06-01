@@ -24,17 +24,13 @@ class Container extends Component {
   }
 
   handleClickGroceryItem(event) {
-    console.log(event.target.getAttribute("value"));
-    console.log(event.target.getAttribute("key"));
     const clickedItem = this.state.groceryItems.find(
       (item) => item.title === event.target.getAttribute("value")
     );
     if (this.state.shoppingListItems.includes(clickedItem)) {
-      console.log("Hey , you're already there!");
       this.addAmountToItem(clickedItem);
     } else {
       clickedItem.amount = 1;
-      console.log(clickedItem);
       this.setState({
         ...this.state,
         shoppingListItems: [...this.state.shoppingListItems].concat(
@@ -47,7 +43,6 @@ class Container extends Component {
   addAmountToItem = (clickedItem) => {
     clickedItem.amount++;
     const updatedItem = [clickedItem];
-    console.log(updatedItem);
     const updatedShoppingListItems = this.state.shoppingListItems.map(
       (obj) => updatedItem.find((o) => o.id === obj.id) || obj
     );
@@ -75,8 +70,6 @@ class Container extends Component {
         `"${this.state.newTitle}" is a bit too long for comfort sry...! I'd keep it under 30 chars..."`
       );
     } else {
-      console.log(this.state.newTitle);
-      console.log(this.state.groceryItems.length);
       const newItem = {
         id: this.state.groceryItems.length + 1,
         title: this.capitalizeFirstChar(this.state.newTitle),

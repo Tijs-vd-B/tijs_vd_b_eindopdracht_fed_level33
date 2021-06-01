@@ -1,8 +1,6 @@
 import React from "react";
 
 function ListItem(props) {
-  // const clickItem = (event) => console.log(event.target);
-  // console.log(props.item);
   return (
     <li
       className="list-item"

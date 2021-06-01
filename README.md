@@ -16,3 +16,4 @@ Changelog:
 * 6+, click in cart also updates the amount of the item
 * 7 added a bit of extra styling, no side-by-side on mobile
 * (hopefully) final push
+* ok, 1 more, clean-up of course, stripped out helper console.log's etc...

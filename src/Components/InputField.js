@@ -5,7 +5,6 @@ function InputField(props) {
     <form className="grocery-form">
       <input
         type="text"
-        // value={this.state.firstName}
         name="newTitle"
         placeholder="New groceries"
         onChange={props.handleChange}
