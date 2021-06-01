@@ -31,7 +31,9 @@ class Container extends Component {
     );
     if (this.state.shoppingListItems.includes(clickedItem)) {
       console.log("Hey , you're already there!");
+      this.addAmountToItem(clickedItem);
     } else {
+      clickedItem.amount = 1;
       console.log(clickedItem);
       this.setState({
         ...this.state,
@@ -42,6 +44,19 @@ class Container extends Component {
     }
   }
 
+  addAmountToItem = (clickedItem) => {
+    clickedItem.amount++;
+    const updatedItem = [clickedItem];
+    console.log(updatedItem);
+    const updatedShoppingListItems = this.state.shoppingListItems.map(
+      (obj) => updatedItem.find((o) => o.id === obj.id) || obj
+    );
+    this.setState({
+      ...this.state,
+      shoppingListItems: updatedShoppingListItems,
+    });
+  };
+
   handleClickEmptyCart() {
     this.setState({
       ...this.state,
@@ -49,18 +64,26 @@ class Container extends Component {
     });
   }
 
+  capitalizeFirstChar = function (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   handleClickAddItem(event) {
     event.preventDefault();
-    console.log(this.state.newTitle);
-    console.log(this.state.groceryItems.length);
-    const newItem = {
-      id: this.state.groceryItems.length + 1,
-      title: this.state.newTitle,
-    };
-    this.setState({
-      ...this.state,
-      groceryItems: [...this.state.groceryItems].concat(newItem),
-    });
+    if (this.state.newTitle.length > 17) {
+      alert(`"${this.state.newTitle}" is a bit too long for comfort sry...!"`);
+    } else {
+      console.log(this.state.newTitle);
+      console.log(this.state.groceryItems.length);
+      const newItem = {
+        id: this.state.groceryItems.length + 1,
+        title: this.capitalizeFirstChar(this.state.newTitle),
+      };
+      this.setState({
+        ...this.state,
+        groceryItems: [...this.state.groceryItems].concat(newItem),
+      });
+    }
   }
 
   handleChange(event) {
@@ -83,6 +106,7 @@ class Container extends Component {
         <div className="shoppingcart">
           <h1>Shoppping Cart</h1>
           <ShoppingCart
+            readonly="true"
             items={this.state.shoppingListItems}
             handleClickEmptyCart={this.handleClickEmptyCart}
           />

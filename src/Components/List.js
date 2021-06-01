@@ -6,6 +6,7 @@ function List(props) {
     <ListItem
       key={item.id}
       item={item}
+      readonly={props.readonly}
       handleClickGroceryItem={props.handleClickGroceryItem}
     />
   ));

@@ -11,6 +11,11 @@ function ListItem(props) {
       value={props.item.title}
     >
       {props.item.title}
+      {props.readonly ? (
+        <span className="amount-item"> : {props.item.amount}</span>
+      ) : (
+        ""
+      )}
     </li>
   );
 }

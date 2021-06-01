@@ -6,7 +6,7 @@ function ShoppingCart(props) {
   return (
     <div className="shoppingcart__item">
       <button onClick={props.handleClickEmptyCart}>Empty Cart</button>
-      <List items={props.items} />
+      <List readonly={props.readonly} items={props.items} />
     </div>
   );
 }
