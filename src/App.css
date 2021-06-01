@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  /* min-width: 500px; */
 }
 
 .App {
@@ -13,22 +14,17 @@ body {
   padding: 0.2rem;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-}
-
-.grocerylist,
-.shoppingcart {
-  width: 100%;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
 }
 li {
   padding: 0.3rem;
+}
+li:hover {
+  transform: scaleY(1.1);
+  cursor: grab;
+  font-weight: 600;
 }
 .grocerylist__item li {
   background-color: indianred;
@@ -41,4 +37,19 @@ li {
 }
 .shoppingcart__item li:nth-child(even) {
   background-color: skyblue;
+}
+.amount-item {
+  font-weight: 600;
+}
+
+@media (min-width: 800px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .grocerylist,
+  .shoppingcart {
+    width: 100%;
+  }
 }
