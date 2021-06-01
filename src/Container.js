@@ -108,6 +108,7 @@ class Container extends Component {
           <ShoppingCart
             readonly="true"
             items={this.state.shoppingListItems}
+            handleClickGroceryItem={this.handleClickGroceryItem}
             handleClickEmptyCart={this.handleClickEmptyCart}
           />
         </div>
