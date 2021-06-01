@@ -70,8 +70,10 @@ class Container extends Component {
 
   handleClickAddItem(event) {
     event.preventDefault();
-    if (this.state.newTitle.length > 17) {
-      alert(`"${this.state.newTitle}" is a bit too long for comfort sry...!"`);
+    if (this.state.newTitle.length > 30) {
+      alert(
+        `"${this.state.newTitle}" is a bit too long for comfort sry...! I'd keep it under 30 chars..."`
+      );
     } else {
       console.log(this.state.newTitle);
       console.log(this.state.groceryItems.length);
