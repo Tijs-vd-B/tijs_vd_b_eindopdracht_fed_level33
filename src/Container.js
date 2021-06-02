@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import GroceryList from "./components/GroceryList";
-import ShoppingCart from "./components/ShoppingCart";
+import GroceryList from "./Components/GroceryList";
+import ShoppingCart from "./Components/ShoppingCart";
 
 class Container extends Component {
   constructor() {
